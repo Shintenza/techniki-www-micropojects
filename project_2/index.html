@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz z HTML/CSS</title>
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-   <h1>"aaaaaaaa"</h1>
+<html lang="pl">
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz z HTML/CSS</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="logo">Masny Quiz o HTML/CSS</h1> 
+    </div>
+    <div class="container">
+        <div class="entry_form_container">
+            <p>Siema, aby przejść do quizu musisz uzupełnić poniższe informacje</p>
+            <form action="post" name="get_user_details" class="entry_form">
+                <label for="first_name">First Name</label>
+                <input type="text" name="first_name" id="first_name" placeholder="Enter your first name">
+                <label for="last_name">Last Name</label>
+                <input type="text" name="last_name" id="last_name" placeholder="Enter your last name">
+                <label for="email">Email</label>
+                <input type="email" name="email" value="" id="email" placeholder="Enter your email address">
+                <input type="button" name="confirm_enter" value="Enter">                
+            </form>             
+        </div>
+    </div>
     <script src="./js/quiz.js"></script>
 </body>
+
 </html>

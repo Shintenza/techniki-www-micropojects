@@ -1,5 +1,88 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ff512f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #dd2476,
+    #ff512f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #dd2476,
+    #ff512f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  color: white;
+  padding: 20px;
+}
+
+.container {
+  background-color: white;
+  width: 40vw;
+  height: 80vh;
+  padding: 20px;
+  border-radius: 5%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.entry_form_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.entry_form {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.entry_form input {
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  background-color: #fafafa;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.entry_form label {
+  padding-bottom: 10px;
+}
+
+.entry_form input[type="button"] {
+  background: linear-gradient(
+    109.6deg,
+    rgb(9, 154, 151) 11.2%,
+    rgb(21, 205, 168) 91.1%
+  );
+  border: none;
+  color: white;
+  width: 50%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  transition: box-shadow 0.3s ease;
+}
+.entry_form input[type="button"]:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
