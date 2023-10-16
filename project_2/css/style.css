@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none !important;
+}
+
 body {
   background: #ff512f; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -59,8 +63,8 @@ body {
   padding: 15px;
   border-radius: 20px;
   margin-bottom: 10px;
-  background-color: #fafafa;
   border: none;
+  background-color: #fafafa;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
@@ -85,4 +89,57 @@ body {
 }
 .entry_form input[type="button"]:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.question_container {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.question_details {
+  padding-bottom: 10px;
+}
+
+.question_details h2 {
+    padding-bottom: 10px;
+}
+
+.question_details p {
+    padding-bottom: 10px;
+}
+
+.answer {
+  background-color: #fafafa;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.controls {
+  padding-top: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.cancel_button,
+.next_button {
+  padding: 20px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.next_button {
+  background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+}
+.cancel_button {
+  background: linear-gradient(
+    102.2deg,
+    rgb(250, 45, 66) 9.6%,
+    rgb(245, 104, 104) 96.1%
+  );
 }

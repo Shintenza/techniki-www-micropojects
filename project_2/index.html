@@ -14,7 +14,7 @@
         <h1 class="logo">Masny Quiz o HTML/CSS</h1> 
     </div>
     <div class="container">
-        <div class="entry_form_container">
+        <div class="entry_form_container ">
             <p>Siema, aby przejść do quizu musisz uzupełnić poniższe informacje</p>
             <form action="post" name="get_user_details" class="entry_form">
                 <label for="first_name">First Name</label>
@@ -25,6 +25,22 @@
                 <input type="email" name="email" value="" id="email" placeholder="Enter your email address">
                 <input type="button" name="confirm_enter" value="Enter">                
             </form>             
+        </div>
+        <div class="question_container hidden">
+            <div class="question_details">
+                <h2 class="question-no">Pytanie 1:</h2>
+                <p>Dokąd nocą tupta jeż?</p>
+            </div>
+            <div class="answers">
+                <div class="answer">A: Tego nie wiadomo</div>
+                <div class="answer">B: Do lasu</div>
+                <div class="answer">C: Nad jeziorko</div>
+                <div class="answer">D: Spotkać się ze swoją jeżycą</div>
+            </div>
+            <div class="controls">
+                <button type="button" class="cancel_button">Zrezygnuj</button>
+                <button type="button" class="next_button">Następne pytanie</button>
+            </div>
         </div>
     </div>
     <script src="./js/quiz.js"></script>
