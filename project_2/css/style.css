@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 .hidden {
@@ -72,13 +73,14 @@ body {
   padding-bottom: 10px;
 }
 
-.entry_form input[type="button"] {
+.entry_form button {
   background: linear-gradient(
     109.6deg,
     rgb(9, 154, 151) 11.2%,
     rgb(21, 205, 168) 91.1%
   );
   border: none;
+  border-radius: 15px;
   color: white;
   width: 50%;
   margin-top: 20px;
@@ -87,7 +89,7 @@ body {
   padding: 15px;
   transition: box-shadow 0.3s ease;
 }
-.entry_form input[type="button"]:hover {
+.entry_form button:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 

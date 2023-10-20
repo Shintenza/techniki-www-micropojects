@@ -7,6 +7,9 @@
     <title>Quiz z HTML/CSS</title>
 
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,19 +19,27 @@
     <div class="container">
         <div class="entry_form_container" id="entry_form_container">
             <p>Siema, aby przejść do quizu musisz uzupełnić poniższe informacje</p>
-            <form action="post" name="get_user_details" class="entry_form">
+            <form action="" name="get_user_details" class="entry_form">
                 <label for="first_name">First Name</label>
                 <input type="text" name="first_name" id="first_name" placeholder="Enter your first name">
                 <label for="last_name">Last Name</label>
                 <input type="text" name="last_name" id="last_name" placeholder="Enter your last name">
                 <label for="email">Email</label>
                 <input type="email" name="email" value="" id="email" placeholder="Enter your email address">
-                <input type="button" id="enter-btn" name="confirm_enter" value="Enter">                
+                <button type="submit" id="enter-btn">Enter</button>
+                <!-- <button type="button" id="enter-btn" name="confirm_enter" value="Enter">                 -->
             </form>             
         </div>
         <div id="question_container" class="question_container hidden">
             <div class="question_details">
-                <h2 class="question-no">Pytanie 1:</h2>
+                <div id="question">Quiestion</div>
+                <div id="answer-buttons" class="answers">
+                    <button class="answer">Answer 1</button>
+                    <button class="answer">Answer 2</button>
+                    <button class="answer">Answer 3</button>
+                    <button class="answer">Answer 4</button>
+                </div>
+                <!-- <h2 class="question-no">Pytanie 1:</h2>
                 <p>Dokąd nocą tupta jeż?</p>
             </div>
             <div class="answers">
@@ -36,14 +47,15 @@
                 <div class="answer">B: Do lasu</div>
                 <div class="answer">C: Nad jeziorko</div>
                 <div class="answer">D: Spotkać się ze swoją jeżycą</div>
-            </div>
+            </div> -->
             <div class="controls">
-                <button type="button" class="cancel_button">Zrezygnuj</button>
-                <button type="button" class="next_button">Następne pytanie</button>
+                <button type="button" class="cancel_button" id="cancel_button">Zrezygnuj</button>
+                <button type="button" class="next_button" id="next_button">Następne pytanie</button>
             </div>
         </div>
     </div>
     <script src="./js/quiz.js"></script>
+    
 </body>
 
 </html>
