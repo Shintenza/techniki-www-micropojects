@@ -28,6 +28,8 @@ const cancelButton = document.getElementById("cancel_button")
 const questionContainerElement = document.getElementById("question_container")
 const answerElement = document.getElementById('answer-buttons')
 const questionElement = document.getElementById('question')
+const finishScreen = document.querySelector('.result_container')
+const restartButton = document.getElementById('restart')
 
 let correctSum = 0
 nextButton.addEventListener('click', () => {
@@ -41,6 +43,13 @@ nextButton.addEventListener('click', () => {
   
 })
 
+restartButton.addEventListener('click', () =>{
+  startForm.classList.remove('hidden')
+  correctSum = 0
+  finishScreen.classList.add('hidden')
+}
+
+)
 
 let count, currentQuestionIndex
 
@@ -93,8 +102,9 @@ entryButton.addEventListener('click', startQuiz)
 
 const setNextQuestion = () => {
   resetState()
-  if(questions.length < currentQuestionIndex){
+  if(questions.length <= currentQuestionIndex){
     finishQuiz()
+    console.log(currentQuestionIndex)
   }
   else{
     showQuestion(currentQuestionIndex)
@@ -159,5 +169,10 @@ const clearStatusClass = (element) =>{
 
 
 const finishQuiz = () =>{
+  finishScreen.classList.remove('hidden')
+  questionContainerElement.classList.add('hidden')
+  const scoreResult = document.querySelector('.result')
+  scoreResult.innerText = `Uzyskano ${correctSum}/${questions.length} punktów`
   
 }
+

@@ -17,7 +17,7 @@
         <h1 class="logo">Masny Quiz o HTML/CSS</h1>
     </div>
     <div class="container">
-        <div class="entry_form_container hidden" id="entry_form_container hidden">
+        <div class="entry_form_container" id="entry_form_container">
             <p>Siema, aby przejść do quizu musisz uzupełnić poniższe informacje</p>
             <form action="" name="get_user_details" class="entry_form">
                 <label for="first_name">First Name</label>
@@ -30,7 +30,7 @@
                 <!-- <button type="button" id="enter-btn" name="confirm_enter" value="Enter">                 -->
             </form>
         </div>
-        <div id="question_container" class="question_container hidden">
+        <div id="question_container" class="question_container hidden" >
             <div class="question_details">
                 <div id="question">Quiestion</div>
             </div>
@@ -49,10 +49,10 @@
                 </button>
             </div>
         </div>
-        <div class="result_container">
+        <div class="result_container hidden">
             <h3>Quiz został ukończony</h3>
             <p class="result">Uzyskano 69/420 punktów</p>
-            <button type="button">Powrót do ekranu startowego</button>
+            <button type="button" id="restart">Powrót do ekranu startowego</button>
         </div>
     </div>
     <script src="./js/quiz.js"></script>
