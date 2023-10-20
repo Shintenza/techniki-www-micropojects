@@ -28,13 +28,23 @@ const cancelButton = document.getElementById("cancel_button")
 const questionContainerElement = document.getElementById("question_container")
 const answerElement = document.getElementById('answer-buttons')
 const questionElement = document.getElementById('question')
-nextButton.addEventListener('click', () => {
-  currentQuestionIndex++
-  setNextQuestion()
-})
-let count, currentQuestionIndex
 
 let correctSum = 0
+nextButton.addEventListener('click', () => {
+  const selectedButton = document.querySelector('.selected')
+  if(questions[currentQuestionIndex].answers[selectedButton.id].correct){
+    correctSum++;
+  }
+  currentQuestionIndex++
+  console.log(correctSum)
+  setNextQuestion()
+  
+})
+
+
+let count, currentQuestionIndex
+
+
 
 const cancelQuiz = () =>{
   correctSum = 0
@@ -83,7 +93,13 @@ entryButton.addEventListener('click', startQuiz)
 
 const setNextQuestion = () => {
   resetState()
-  showQuestion(currentQuestionIndex)
+  if(questions.length < currentQuestionIndex){
+    finishQuiz()
+  }
+  else{
+    showQuestion(currentQuestionIndex)
+  }
+  
 }
 
 
@@ -113,11 +129,16 @@ const resetState = () => {
 }
 
 const selectAnswer = (e) =>{
-  const selectedButton = e.target
-  if(questions[currentQuestionIndex].answers[selectedButton.id].correct){
-    correctSum++;
+  const selectedAnswerButton = document.querySelector('.selected')
+  if(selectedAnswerButton){
+    selectedAnswerButton.classList.remove('selected')
   }
+
+  const selectedButton = e.target
+
   nextButton.classList.remove('hidden')
+  selectedButton.classList.add('selected')
+  
 }
 
 const setStatusClass = (element, correct) =>{
@@ -137,3 +158,6 @@ const clearStatusClass = (element) =>{
 }
 
 
+const finishQuiz = () =>{
+  
+}

@@ -111,12 +111,22 @@ body {
     padding-bottom: 10px;
 }
 
+.answers {
+  display: flex;
+  flex-direction: column;
+
+}
 .answer {
   background-color: #fafafa;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 15px;
+}
+
+.selected{
+  box-shadow: rgba(204, 23, 123, 0.16) 0px 1px 4px;
+  background-color: red !important;
 }
 
 .controls {
