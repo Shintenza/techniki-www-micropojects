@@ -28,7 +28,10 @@ const cancelButton = document.getElementById("cancel_button")
 const questionContainerElement = document.getElementById("question_container")
 const answerElement = document.getElementById('answer-buttons')
 const questionElement = document.getElementById('question')
-
+nextButton.addEventListener('click', () => {
+  currentQuestionIndex++
+  setNextQuestion()
+})
 let count, currentQuestionIndex
 
 let correctSum = 0
