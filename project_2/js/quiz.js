@@ -29,6 +29,26 @@ const questionContainerElement = document.getElementById("question_container")
 const answerElement = document.getElementById('answer-buttons')
 const questionElement = document.getElementById('question')
 
+let count, currentQuestionIndex
+
+let correctSum = 0
+
+const cancelQuiz = () =>{
+  correctSum = 0
+  questionContainerElement.classList.add('hidden')
+  nextButton.classList.add('hidden')
+  startForm.classList.remove('hidden')
+
+  console.log('canceled quiz try')
+}
+
+
+
+
+
+cancelButton.addEventListener("click", cancelQuiz)
+
+
 entryForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let firstName = document.getElementById("first_name");
@@ -44,9 +64,7 @@ entryForm.addEventListener("submit", (e) => {
 });
 
 
-let count, currentQuestionIndex
 
-let correctSum = 0
 
 
 
