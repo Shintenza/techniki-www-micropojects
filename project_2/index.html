@@ -18,28 +18,18 @@
     </div>
     <div class="container">
         <div class="entry_form_container" id="entry_form_container">
-            <p>Siema, aby przejść do quizu musisz uzupełnić poniższe informacje</p>
+            <p>Witaj, aby przejść do quizu musisz podzielić się swoim imieniem</p>
             <form action="" name="get_user_details" class="entry_form">
-                <label for="first_name">First Name</label>
-                <input type="text" name="first_name" id="first_name" placeholder="Enter your first name" />
-                <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" id="last_name" placeholder="Enter your last name" />
-                <label for="email">Email</label>
-                <input type="email" name="email" value="" id="email" placeholder="Enter your email address" />
-                <button type="submit" id="enter-btn">Enter</button>
-                <!-- <button type="button" id="enter-btn" name="confirm_enter" value="Enter">                 -->
+                <label for="first_name">Imię</label>
+                <input type="text" name="first_name" id="first_name" placeholder="Wpisz swoje imię" />
+                <button type="submit" id="enter-btn">Rozpocznij</button>
             </form>
         </div>
-        <div id="question_container" class="question_container hidden" >
+        <div id="question_container" class="question_container hidden">
             <div class="question_details">
                 <div id="question">Quiestion</div>
             </div>
-            <div id="answer-buttons" class="answers">
-                <button class="answer">Answer 1</button>
-                <button class="answer">Answer 2</button>
-                <button class="answer">Answer 3</button>
-                <button class="answer">Answer 4</button>
-            </div>
+            <div id="answer-buttons" class="answers"></div>
             <div class="controls">
                 <button type="button" class="cancel_button" id="cancel_button">
                     Zrezygnuj
@@ -51,10 +41,11 @@
         </div>
         <div class="result_container hidden">
             <h3>Quiz został ukończony</h3>
-            <p class="result">Uzyskano 69/420 punktów</p>
+            <p class="result"></p>
             <button type="button" id="restart">Powrót do ekranu startowego</button>
         </div>
     </div>
+    <script src="./js/qustions.js"></script>
     <script src="./js/quiz.js"></script>
 </body>
 

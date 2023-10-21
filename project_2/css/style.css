@@ -114,10 +114,12 @@ body {
 .answers {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 .answer {
   background-color: #fafafa;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border: none;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 15px;
@@ -125,7 +127,7 @@ body {
 
 .selected {
   box-shadow: rgba(204, 23, 123, 0.16) 0px 1px 4px;
-  background-color: red !important;
+  background: linear-gradient(-60deg, #ff5858 0%, #f09819 100%) !important;
 }
 
 .controls {
