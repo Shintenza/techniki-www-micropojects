@@ -10,6 +10,8 @@ const finishScreen = document.querySelector(".result_container");
 const restartButton = document.getElementById("restart");
 
 let correctSum = 0;
+let currentQuestionIndex = 0;
+
 nextButton.addEventListener("click", () => {
   const selectedButton = document.querySelector(".selected");
   if (questions[currentQuestionIndex].answers[selectedButton.id].correct) {
@@ -26,28 +28,34 @@ restartButton.addEventListener("click", () => {
   finishScreen.classList.add("hidden");
 });
 
-let count, currentQuestionIndex;
-
-const cancelQuiz = () => {
+cancelButton.addEventListener("click", () => {
   correctSum = 0;
   questionContainerElement.classList.add("hidden");
   nextButton.classList.add("hidden");
   startForm.classList.remove("hidden");
-
-  console.log("canceled quiz try");
-};
-
-cancelButton.addEventListener("click", cancelQuiz);
+});
 
 entryForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  let firstName = document.getElementById("first_name");
-  let lastName = document.getElementById("last_name");
-  let email = document.getElementById("email");
+  let firstNameInput = document.getElementById("first_name");
 
-  if (firstName.value == "" || lastName.value == "" || email.value == "") {
-    console.log("error help please");
+  if (firstNameInput.value == "") {
+    if (!document.querySelector(".form_error_msg")) {
+      const errorMessageElement = document.createElement("p");
+      errorMessageElement.classList.add("form_error_msg");
+      errorMessageElement.innerText =
+        "Musisz podać swoję imię aby kontynuować!";
+      firstNameInput.after(errorMessageElement);
+    }
+
+    firstNameInput.classList.add("missing");
   } else {
+    if (firstNameInput.classList.contains("missing")) {
+      firstNameInput.classList.remove("missing");
+      const errorMessageElement = document.querySelector(".form_error_msg")
+      errorMessageElement.remove();
+    }
+    firstNameInput.value = "";
     startQuiz();
   }
 });
@@ -58,13 +66,11 @@ const startQuiz = () => {
   questionContainerElement.classList.remove("hidden");
   setNextQuestion();
 };
-entryButton.addEventListener("click", startQuiz);
 
 const setNextQuestion = () => {
   resetState();
   if (questions.length <= currentQuestionIndex) {
     finishQuiz();
-    console.log(currentQuestionIndex);
   } else {
     showQuestion(currentQuestionIndex);
   }
@@ -87,7 +93,6 @@ const showQuestion = (currentQuestionIndex) => {
 };
 
 const resetState = () => {
-  clearStatusClass(document.body);
   nextButton.classList.add("hidden");
   while (answerElement.firstChild) {
     answerElement.removeChild(answerElement.firstChild);
