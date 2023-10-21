@@ -11,6 +11,7 @@ const restartButton = document.getElementById("restart");
 
 let correctSum = 0;
 let currentQuestionIndex = 0;
+let username = "";
 
 nextButton.addEventListener("click", () => {
   const selectedButton = document.querySelector(".selected");
@@ -18,18 +19,19 @@ nextButton.addEventListener("click", () => {
     correctSum++;
   }
   currentQuestionIndex++;
-  console.log(correctSum);
   setNextQuestion();
 });
 
 restartButton.addEventListener("click", () => {
   startForm.classList.remove("hidden");
   correctSum = 0;
+  username = "";
   finishScreen.classList.add("hidden");
 });
 
 cancelButton.addEventListener("click", () => {
   correctSum = 0;
+  username = "";
   questionContainerElement.classList.add("hidden");
   nextButton.classList.add("hidden");
   startForm.classList.remove("hidden");
@@ -52,9 +54,10 @@ entryForm.addEventListener("submit", (e) => {
   } else {
     if (firstNameInput.classList.contains("missing")) {
       firstNameInput.classList.remove("missing");
-      const errorMessageElement = document.querySelector(".form_error_msg")
+      const errorMessageElement = document.querySelector(".form_error_msg");
       errorMessageElement.remove();
     }
+    username = firstNameInput.value;
     firstNameInput.value = "";
     startQuiz();
   }
@@ -112,8 +115,11 @@ const selectAnswer = (e) => {
 };
 
 const finishQuiz = () => {
+  const resultMsgElement = document.querySelector(".result_msg");
+  const scoreResult = document.querySelector(".result");
+
+  resultMsgElement.innerText = `Brawo ${username} właśnie ukończyłeś/aś nasz quiz`;
   finishScreen.classList.remove("hidden");
   questionContainerElement.classList.add("hidden");
-  const scoreResult = document.querySelector(".result");
   scoreResult.innerText = `Uzyskano ${correctSum}/${questions.length} punktów`;
 };

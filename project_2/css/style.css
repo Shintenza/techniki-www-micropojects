@@ -190,9 +190,13 @@ body {
   border: none;
   border-radius: 15px;
   color: black;
-  width: 50%;
+  width: 60%;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   padding: 15px;
+}
+
+.result {
+  padding-top: 20px;
 }
