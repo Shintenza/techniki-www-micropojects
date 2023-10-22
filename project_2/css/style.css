@@ -102,6 +102,11 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.question_number {
+  display: block;
+  font-size: 1.5rem;
+}
+
 .question_container {
   padding: 20px;
   width: 100%;
@@ -125,6 +130,7 @@ body {
   flex-direction: column;
   margin-top: 20px;
 }
+
 .answer {
   background-color: #fafafa;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

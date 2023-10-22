@@ -8,6 +8,7 @@ const answerElement = document.getElementById("answer-buttons");
 const questionElement = document.getElementById("question");
 const finishScreen = document.querySelector(".result_container");
 const restartButton = document.getElementById("restart");
+const questionNumberElement = document.querySelector(".question_number");
 
 let correctSum = 0;
 let currentQuestionIndex = 0;
@@ -81,6 +82,7 @@ const setNextQuestion = () => {
 
 const showQuestion = (currentQuestionIndex) => {
   const question = questions[currentQuestionIndex];
+  questionNumberElement.innerText = `Pytanie nr ${currentQuestionIndex + 1} z ${questions.length}:`;
   questionElement.innerText = question.question;
   question.answers.forEach((answer, count) => {
     const button = document.createElement("button");
