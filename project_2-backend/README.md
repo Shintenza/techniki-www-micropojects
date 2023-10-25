@@ -5,6 +5,5 @@
 - [x] protecting routes
 - [x] get random questions endpoint
 - [x] add a question endpoint
-- [] validate answers endpoint
-- [] get results endpoint
+- [x] validate answers endpoint and return score endpoint
 - [] (optional) edit a question endpoint
