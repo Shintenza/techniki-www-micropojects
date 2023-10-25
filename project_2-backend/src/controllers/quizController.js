@@ -1,5 +1,7 @@
 import asyncHandler from "express-async-handler";
 import Question from "../models/Question.js";
+import Result from "../models/Result.js";
+import User from "../models/User.js";
 
 const getQuestions = asyncHandler(async (req, res) => {
   const numberOfQuestions = parseInt(req.query.num);
@@ -39,4 +41,44 @@ const postAddQuestion = asyncHandler(async (req, res) => {
 
   res.status(200).json(question);
 });
-export { getQuestions, postAddQuestion };
+
+const postVerifyAnswers = asyncHandler(async (req, res) => {
+  let score = 0;
+  if (!req.body.userID || !req.body.answers || req.body.answers.length == 0) {
+    res.status(400);
+    throw new Error("invalid request body");
+  }
+
+  const isValidUser = await User.findById(req.body.userID);
+  if (!isValidUser) {
+    res.status(400);
+    throw new Error("User with the given ID does not exist");
+  }
+
+  for (let q of req.body.answers) {
+    const question = await Question.findById(q.questionID);
+    if (!question) {
+      throw new Error(
+        "Error occured while processing the answers; question with given ID does not exist"
+      );
+    }
+    for (let answer of question.answers) {
+      if (answer.id == q.givenAnswerID && answer.isCorrect) {
+        score += 1;
+      }
+    }
+  }
+
+  const result = await Result.create({
+    userID: req.body.userID,
+    score,
+  });
+
+  if (!result) {
+    throw new Error("error while saving the result into the database");
+  }
+
+  res.json(result);
+});
+
+export { getQuestions, postAddQuestion, postVerifyAnswers };
