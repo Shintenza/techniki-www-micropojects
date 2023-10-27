@@ -1,5 +1,5 @@
 const startForm = document.getElementById("entry_form_container");
-const entryForm = document.querySelector(".entry_form");
+const loginForm = document.querySelector(".login_form");
 const entryButton = document.getElementById("enter-btn");
 const nextButton = document.getElementById("next_button");
 const cancelButton = document.getElementById("cancel_button");
@@ -12,7 +12,7 @@ const questionNumberElement = document.querySelector(".question_number");
 
 let correctSum = 0;
 let currentQuestionIndex = 0;
-let username = "";
+
 
 nextButton.addEventListener("click", () => {
   const selectedButton = document.querySelector(".selected");
@@ -26,40 +26,40 @@ nextButton.addEventListener("click", () => {
 restartButton.addEventListener("click", () => {
   startForm.classList.remove("hidden");
   correctSum = 0;
-  username = "";
   finishScreen.classList.add("hidden");
 });
 
 cancelButton.addEventListener("click", () => {
   correctSum = 0;
-  username = "";
   questionContainerElement.classList.add("hidden");
   nextButton.classList.add("hidden");
   startForm.classList.remove("hidden");
 });
 
-entryForm.addEventListener("submit", (e) => {
+loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  let firstNameInput = document.getElementById("first_name");
+  let loginInput = document.getElementById("login");
+  let passwordInput = document.getElementById("password")
 
-  if (firstNameInput.value == "") {
+  if (loginInput.value == "" && passwordInput.value == "") {
     if (!document.querySelector(".form_error_msg")) {
       const errorMessageElement = document.createElement("p");
       errorMessageElement.classList.add("form_error_msg");
       errorMessageElement.innerText =
-        "Musisz podać swoję imię aby kontynuować!";
-      firstNameInput.after(errorMessageElement);
+        "Musisz podać swoje login i hasło aby kontynuować!";
+      loginInput.after(errorMessageElement);
+      
     }
 
-    firstNameInput.classList.add("missing");
+    loginInput.classList.add("missing");
   } else {
-    if (firstNameInput.classList.contains("missing")) {
-      firstNameInput.classList.remove("missing");
+    if (loginInput.classList.contains("missing")) {
+      loginInput.classList.remove("missing");
       const errorMessageElement = document.querySelector(".form_error_msg");
       errorMessageElement.remove();
     }
-    username = firstNameInput.value;
-    firstNameInput.value = "";
+    login = loginInput.value;
+    loginInput.value = "";
     startQuiz();
   }
 });
@@ -120,7 +120,7 @@ const finishQuiz = () => {
   const resultMsgElement = document.querySelector(".result_msg");
   const scoreResult = document.querySelector(".result");
 
-  resultMsgElement.innerText = `Brawo ${username} właśnie ukończyłeś/aś nasz quiz`;
+  resultMsgElement.innerText = `Brawo właśnie ukończyłeś/aś nasz quiz`;
   finishScreen.classList.remove("hidden");
   questionContainerElement.classList.add("hidden");
   scoreResult.innerText = `Uzyskano ${correctSum}/${questions.length} punktów`;

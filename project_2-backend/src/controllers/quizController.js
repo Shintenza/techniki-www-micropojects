@@ -81,4 +81,16 @@ const postVerifyAnswers = asyncHandler(async (req, res) => {
   res.json(result);
 });
 
-export { getQuestions, postAddQuestion, postVerifyAnswers };
+
+const postDeleteQuestion = asyncHandler(async (req, res) =>{
+  const  id = req.body.id
+  if(!id){
+    res.status(400)
+    throw new Error("no such request id")
+  }
+
+  const isExist = await Question.findByIdAndDelete(id)
+
+
+});
+export { getQuestions, postAddQuestion, postVerifyAnswers, postDeleteQuestion };
