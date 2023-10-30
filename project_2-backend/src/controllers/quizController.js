@@ -4,14 +4,12 @@ import Result from "../models/Result.js";
 import User from "../models/User.js";
 
 const getQuestions = asyncHandler(async (req, res) => {
-  const numberOfQuestions = parseInt(req.query.num);
-  if (!numberOfQuestions) {
-    res.status(400);
-    throw new Error("You haven't specified number of questions to be returned");
-  }
-  const randomQuestions = await Question.aggregate([
-    { $sample: { size: numberOfQuestions } },
-  ]);
+  // const numberOfQuestions = parseInt(req.query.num);
+  // if (!numberOfQuestions) {
+  //   res.status(400);
+  //   throw new Error("You haven't specified number of questions to be returned");
+  // }
+  const randomQuestions = await Question.aggregate([{ $sample: { size: 10 } }]);
   res.json(randomQuestions).status(200);
 });
 
@@ -81,16 +79,30 @@ const postVerifyAnswers = asyncHandler(async (req, res) => {
   res.json(result);
 });
 
-
-const postDeleteQuestion = asyncHandler(async (req, res) =>{
-  const  id = req.body.id
-  if(!id){
-    res.status(400)
-    throw new Error("no such request id")
+const deleteQuestion = asyncHandler(async (req, res) => {
+  const id = req.body.id;
+  if (!id) {
+    res.status(400);
+    throw new Error("no such request id");
   }
 
-  const isExist = await Question.findByIdAndDelete(id)
-
-
+  await Question.findByIdAndDelete(id);
+  res.status(200).json({ message: "deleted" });
 });
-export { getQuestions, postAddQuestion, postVerifyAnswers, postDeleteQuestion };
+
+const getResults = asyncHandler(async (req, res) => {
+  const results = await Result.find().sort({ _id: -1 }).limit(10);
+  if (!results) {
+    res.status(418);
+    throw new Error("I have nothing to display");
+  }
+  res.status(200).json(results);
+});
+
+export {
+  getQuestions,
+  postAddQuestion,
+  postVerifyAnswers,
+  deleteQuestion,
+  getResults,
+};
