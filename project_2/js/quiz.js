@@ -1,75 +1,56 @@
-const startForm = document.getElementById("entry_form_container");
-const loginForm = document.querySelector(".login_form");
-const entryButton = document.getElementById("enter-btn");
+const questions = JSON.parse(localStorage.getItem("questions"))
+const selectedAnswers = []
+const backendURL = "http://localhost:8080";
+
 const nextButton = document.getElementById("next_button");
 const cancelButton = document.getElementById("cancel_button");
 const questionContainerElement = document.getElementById("question_container");
-const answerElement = document.getElementById("answer-buttons");
+const answersElement = document.getElementById("answers");
 const questionElement = document.getElementById("question");
 const finishScreen = document.querySelector(".result_container");
 const restartButton = document.getElementById("restart");
 const questionNumberElement = document.querySelector(".question_number");
 
-let correctSum = 0;
+
 let currentQuestionIndex = 0;
 
 
 nextButton.addEventListener("click", () => {
   const selectedButton = document.querySelector(".selected");
-  if (questions[currentQuestionIndex].answers[selectedButton.id].correct) {
-    correctSum++;
-  }
+
+  const selectedAnswer = {questionID: questions[currentQuestionIndex]._id,
+  givenAnswerID: questions[currentQuestionIndex].answers[selectedButton.id]._id}
   currentQuestionIndex++;
+
+  selectedAnswers.push(selectedAnswer)
+  console.log(selectedAnswer)
   setNextQuestion();
 });
 
 restartButton.addEventListener("click", () => {
-  startForm.classList.remove("hidden");
-  correctSum = 0;
+  window.location.pathname = "/"
+  localStorage.removeItem("questions")
+  currentQuestionIndex = 0
   finishScreen.classList.add("hidden");
 });
 
 cancelButton.addEventListener("click", () => {
-  correctSum = 0;
+  localStorage.removeItem("questions")
+  currentQuestionIndex = 0
   questionContainerElement.classList.add("hidden");
   nextButton.classList.add("hidden");
-  startForm.classList.remove("hidden");
+  window.location.pathname = "/"
 });
 
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let loginInput = document.getElementById("login");
-  let passwordInput = document.getElementById("password")
 
-  if (loginInput.value == "" && passwordInput.value == "") {
-    if (!document.querySelector(".form_error_msg")) {
-      const errorMessageElement = document.createElement("p");
-      errorMessageElement.classList.add("form_error_msg");
-      errorMessageElement.innerText =
-        "Musisz podać swoje login i hasło aby kontynuować!";
-      loginInput.after(errorMessageElement);
-      
-    }
-
-    loginInput.classList.add("missing");
-  } else {
-    if (loginInput.classList.contains("missing")) {
-      loginInput.classList.remove("missing");
-      const errorMessageElement = document.querySelector(".form_error_msg");
-      errorMessageElement.remove();
-    }
-    login = loginInput.value;
-    loginInput.value = "";
-    startQuiz();
-  }
-});
 
 const startQuiz = () => {
-  startForm.classList.add("hidden");
   currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hidden");
+  
   setNextQuestion();
 };
+
+window.onload = startQuiz
 
 const setNextQuestion = () => {
   resetState();
@@ -83,24 +64,24 @@ const setNextQuestion = () => {
 const showQuestion = (currentQuestionIndex) => {
   const question = questions[currentQuestionIndex];
   questionNumberElement.innerText = `Pytanie nr ${currentQuestionIndex + 1} z ${questions.length}:`;
-  questionElement.innerText = question.question;
+  questionElement.innerText = question.questionName;
   question.answers.forEach((answer, count) => {
     const button = document.createElement("button");
-    button.innerText = answer.text;
+    button.innerText = answer.answer;
     button.classList.add("answer");
     button.setAttribute("id", count);
     if (answer.correct) {
       button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", selectAnswer);
-    answerElement.appendChild(button);
+    answersElement.appendChild(button);
   });
 };
 
 const resetState = () => {
   nextButton.classList.add("hidden");
-  while (answerElement.firstChild) {
-    answerElement.removeChild(answerElement.firstChild);
+  while (answersElement.firstChild) {
+    answersElement.removeChild(answersElement.firstChild);
   }
 };
 
@@ -116,12 +97,45 @@ const selectAnswer = (e) => {
   selectedButton.classList.add("selected");
 };
 
-const finishQuiz = () => {
-  const resultMsgElement = document.querySelector(".result_msg");
+const finishQuiz = async () => {
+
+  const userID = localStorage.getItem("id")
+  const token = getTokenFromCookie()
+
+  const response = await fetch(`${backendURL}/quiz/verify`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userID,
+      answers: selectedAnswers
+    }),
+  });
+  const { score } = await response.json();
+  console.log(score);
+
+
+
+
+
   const scoreResult = document.querySelector(".result");
 
-  resultMsgElement.innerText = `Brawo właśnie ukończyłeś/aś nasz quiz`;
   finishScreen.classList.remove("hidden");
   questionContainerElement.classList.add("hidden");
-  scoreResult.innerText = `Uzyskano ${correctSum}/${questions.length} punktów`;
+  scoreResult.innerText = `Uzyskano ${score}/${questions.length} punktów`;
 };
+
+
+const getTokenFromCookie = () => {
+  const cookies = document.cookie.split("; ");
+  const tokenCookie = cookies.find((cookie) => cookie.startsWith("token="));
+
+  const token = tokenCookie ? tokenCookie.split("=")[1] : null;
+  console.log(token);
+  return token;
+};
+
+
+
