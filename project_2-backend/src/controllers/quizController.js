@@ -99,10 +99,35 @@ const getResults = asyncHandler(async (req, res) => {
   res.status(200).json(results);
 });
 
+const getUserResults = asyncHandler(async (req,res)=> {
+  const userID = req.query.id;
+  if (!userID) {
+    res.status(400);
+    throw new Error('invalid request');
+  }
+  const lastUserResults = await Result.find({userID}).sort({_id: -1}).limit(6);
+
+  if (lastUserResults.length == 0) {
+    res.status(400);
+    throw new Error("invalid user ID");
+  }    
+  const withTimestamps = lastUserResults.map(wp => ({
+      ...wp.toObject(),
+      timestamp: wp._id.getTimestamp(), // Tworzy timestamp z daty utworzenia
+    }));
+
+  // console.log(lastUserResults[0]._id.getTimestamp());
+
+
+  res.status(200);
+  res.json(withTimestamps);
+})
+
 export {
   getQuestions,
   postAddQuestion,
   postVerifyAnswers,
   deleteQuestion,
   getResults,
+  getUserResults
 };
