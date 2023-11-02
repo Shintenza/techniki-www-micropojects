@@ -1,0 +1,19 @@
+.container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container h3 {
+  padding-bottom: 20px;
+  font-size: 1.5rem;
+}
+.result_box {
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-bottom: 20px;
+}
