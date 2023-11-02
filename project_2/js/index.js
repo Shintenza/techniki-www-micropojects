@@ -2,7 +2,6 @@ const backendURL = "http://localhost:8080";
 
 
 const ifLoggedIn = () => {
-    console.log("pupupipi")
     const username = localStorage.getItem("username");
     const userID = localStorage.getItem("id")
     const authorizationReq = document.querySelector(".auth_req");
