@@ -1,0 +1,42 @@
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./../css/main.css" />
+  <link rel="stylesheet" href="./../css/add_question.css" />
+</head>
+
+<body>
+  <div class="header">
+    <a href="../index.html" class="logo">Masny Quiz o HTML/CSS</a>
+  </div>
+  <div class="container">
+    <form action="" name="add_question_form" class="add_question_form">
+      <label for="question_name">Pytanie</label>
+      <input type="text" name="question_name" id="question_name" />
+      <p>Odpowiedzi</p>
+      <div class="answer_wrapper">
+        <input type="text" name="answer_name" id="answer_1" />
+        <input type="radio" id="is_correct_checkbox" name="answer" checked>
+      </div>
+      <div class="answer_wrapper">
+        <input type="text" name="answer_name" id="answer_2" />
+        <input type="radio" id="is_correct_checkbox" name="answer">
+      </div>
+      <div class="answer_wrapper">
+        <input type="text" name="answer_name" id="answer_3" />
+        <input type="radio" id="is_correct_checkbox" name="answer">
+      </div>
+      <div class="answer_wrapper">
+        <input type="text" name="answer_name" id="answer_4" />
+        <input type="radio" id="is_correct_checkbox" name="answer">
+      </div>
+      <button type="submit" class="add_question_btn">Dodaj pytanie</button>
+    </form>
+  </div>
+  <script src="./../js/add_question.js"></script>
+</body>
+
+</html>
