@@ -31,11 +31,17 @@ const postAddQuestion = asyncHandler(async (req, res) => {
       "Wrong request, you have to provide at least one correct answer"
     );
   }
+  let question
+  try {
+    question = await Question.create({
+      questionName: req.body.question,
+      answers: req.body.answers,
+    });
 
-  const question = await Question.create({
-    questionName: req.body.question,
-    answers: req.body.answers,
-  });
+  } catch(error) {
+    res.status(400);
+    throw new Error(error);
+  }
 
   res.status(200).json(question);
 });
