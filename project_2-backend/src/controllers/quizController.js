@@ -113,7 +113,7 @@ const getUserResults = asyncHandler(async (req,res)=> {
   }
   const lastUserResults = await Result.find({userID}).sort({_id: -1}).limit(6);
 
-  if (lastUserResults.length == 0) {
+  if (!lastUserResults) {
     res.status(400);
     throw new Error("invalid user ID");
   }    
