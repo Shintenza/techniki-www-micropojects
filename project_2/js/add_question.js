@@ -71,5 +71,11 @@ addQuestionBtn.addEventListener("click", async (e) => {
     errorMessageElement.classList.add("form_success_msg");
     errorMessageElement.innerText = "Pomyślnie dodano pytanie";
     addQuestionBtn.before(errorMessageElement);
+
+    answerElements.forEach((answer) => {
+      const answerText = answer.children.item(0).value;
+      answerText.value = '';
+      questionElement.value = '';
+    });
   }
 });
