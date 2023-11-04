@@ -3,13 +3,23 @@ const backendURL = "http://localhost:8080";
 const addQuestionBtn = document.querySelector(".add_question_btn");
 addQuestionBtn.addEventListener("click", async (e) => {
   e.preventDefault();
+
+  const cookies = document.cookie.split("; ");
   const tokenCookie = cookies.find((cookie) => cookie.startsWith("token="));
+
   const token = tokenCookie ? tokenCookie.split("=")[1] : null;
 
   const isVisibleErrorMsg = document.querySelector(".form_error_msg");
+  const isVisibleSuccessMsg = document.querySelector(".form_error_msg");
+
   if (isVisibleErrorMsg) {
-      isVisibleErrorMsg.remove();
+    isVisibleErrorMsg.remove();
   }
+  if (isVisibleSuccessMsg) {
+    isVisibleSuccessMsg.remove();
+  }
+
+  const errorMessageElement = document.createElement("p");
 
   const questionElement = document.getElementById("question_name");
   const answerElements = document.querySelectorAll(".answer_wrapper");
@@ -25,36 +35,41 @@ addQuestionBtn.addEventListener("click", async (e) => {
     const answerText = answer.children.item(0).value;
     const isAnswerCorrect = answer.children.item(1).checked;
 
-    if (!answerText || !isAnswerCorrect) {
+    if (!answerText) {
       isValidForm = false;
     }
 
     answers.push({ answer: answerText, isCorrect: isAnswerCorrect });
   });
 
-  
   if (!isValidForm) {
-    const errorMessageElement = document.createElement("p");
     errorMessageElement.classList.add("form_error_msg");
-    errorMessageElement.innerText =
-        "Musisz uzupełnić wszystkie pola";
+    errorMessageElement.innerText = "Musisz uzupełnić wszystkie pola";
     addQuestionBtn.before(errorMessageElement);
     return;
   }
 
   const postBody = {
-    questionName: questionElement.value,
+    question: questionElement.value,
     answers,
   };
 
-  const response = await fetch(`${backendURL}`, {
-    method: 'POST',
+  const response = await fetch(`${backendURL}/quiz/add`, {
+    method: "POST",
     headers: {
-        "Content-Type": "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(postBody),
-  })
+  });
 
-  
+  if (response.status != 200) {
+    errorMessageElement.classList.add("form_error_msg");
+    errorMessageElement.innerText = "Nie udało się dodać pytania";
+    addQuestionBtn.before(errorMessageElement);
+  } else {
+    errorMessageElement.classList.add("form_success_msg");
+    errorMessageElement.innerText = "Pomyślnie dodano pytanie";
+    addQuestionBtn.before(errorMessageElement);
+  }
 });

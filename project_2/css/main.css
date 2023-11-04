@@ -16,6 +16,10 @@
   color: red;
   font-size: 0.8rem;
 }
+.form_success_msg {
+  color: green;
+  font-size: 0.8rem;
+}
 
 .hidden {
   display: none !important;
