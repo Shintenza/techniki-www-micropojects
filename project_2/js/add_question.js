@@ -74,8 +74,8 @@ addQuestionBtn.addEventListener("click", async (e) => {
 
     answerElements.forEach((answer) => {
       const answerText = answer.children.item(0).value;
-      answerText.value = '';
-      questionElement.value = '';
+      answerText.value = "";
+      questionElement.value = "";
     });
   }
 });
