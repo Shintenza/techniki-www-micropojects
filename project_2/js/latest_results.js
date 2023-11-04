@@ -29,6 +29,13 @@ window.onload = async () => {
 
   const containerElem = document.querySelector(".container");
 
+  if (responseJson.length == 0) {
+    const responseElem = document.createElement('p');
+    responseElem.innerText = 'brak wcześniejszych podejść do quizu';
+    containerElem.appendChild(responseElem);
+    return;
+  }
+
   responseJson.forEach((result) => {
     containerElem.appendChild(
       createResultContainer(result.timestamp, result.score),

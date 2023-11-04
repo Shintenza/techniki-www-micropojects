@@ -44,7 +44,7 @@ loginButton.addEventListener("click", async (e) => {
     });
     const responseJson = await response.json();
 
-    const { token, username, _id } = responseJson;
+    const { token, username, _id, role } = responseJson;
 
     if (!token || !username) {
         errorMessageElement.innerText = "Podane login i hasło nie są prawdziwe";
@@ -58,6 +58,7 @@ loginButton.addEventListener("click", async (e) => {
 
     localStorage.setItem("username", username);
     localStorage.setItem("id", _id);
+    localStorage.setItem("role", role);
 
     window.location.pathname = "/";
 });

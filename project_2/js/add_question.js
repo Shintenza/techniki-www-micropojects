@@ -72,10 +72,10 @@ addQuestionBtn.addEventListener("click", async (e) => {
     errorMessageElement.innerText = "Pomyślnie dodano pytanie";
     addQuestionBtn.before(errorMessageElement);
 
+    questionElement.value = "";
     answerElements.forEach((answer) => {
-      const answerText = answer.children.item(0).value;
+      const answerText = answer.children.item(0);
       answerText.value = "";
-      questionElement.value = "";
     });
   }
 });

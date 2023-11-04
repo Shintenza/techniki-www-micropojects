@@ -16,6 +16,17 @@ const ifLoggedIn = () => {
         const usernameGreeting = document.querySelector(".menu_greeting");
         usernameGreeting.innerText = `Witaj ${username}`;
     }
+    
+    const role = localStorage.getItem('role');
+    console.log(role)
+    if (role == 'professor') {
+        const possibleOptionsElem = document.querySelector('.possible_options');
+        const addQuestionButton = document.createElement('button');
+        addQuestionButton.innerText = 'Dodaj pytanie'
+        addQuestionButton.addEventListener('click', ()=>window.location.pathname = '/pages/add_question')
+
+        possibleOptionsElem.appendChild(addQuestionButton);
+    }
 };
 
 window.onload = ifLoggedIn;

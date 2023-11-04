@@ -2,7 +2,6 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 .container h3 {
   padding-bottom: 20px;

@@ -101,13 +101,13 @@ body {
   padding-bottom: 20px;
 }
 
-.history_quiz_btn,
-.start_quiz_btn {
+.possible_options button {
   width: 100%;
   padding: 15px;
   margin-top: 10px;
   border:none;
   border-radius: 10px;
+
 }
 
 .quiz_rules_header {
