@@ -8,7 +8,8 @@ class TemperatureSensor {
     }
 
     getAverageTemperature() {
-        const sum = this.temperatureLog.reduce((acc, record) => acc + record.temp, 0);
+        // const sum = this.temperatureLog.reduce((acc, record) => acc + record.temp, 0);
+        const sum = this.temperatureLog.reduce((acc, record) => acc + record.temperature, 0);
         return sum / this.temperatureLog.length;
     }
 
