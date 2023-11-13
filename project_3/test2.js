@@ -28,4 +28,9 @@ class UserProfiler {
     }
 }
 
-// Comments: unused class UserProfiler and unused Map
+// Comments: profile var is strange
+
+let user = UserProfiler()
+user.addUser(4, null)
+
+console.log(user)
