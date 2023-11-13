@@ -28,9 +28,5 @@ class UserProfiler {
     }
 }
 
-// Comments: profile var is strange
+// Comments: coś się dzieje nie tak z datą
 
-let user = UserProfiler()
-user.addUser(4, null)
-
-console.log(user)
