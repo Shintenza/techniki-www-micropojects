@@ -4,8 +4,9 @@ class UserProfiler {
     }
 
     addUser(userId, profile) {
+        const creationDate = new Date();
         if (!this.users.has(userId)) {
-            this.users.set(userId, { ...profile, creationDate: new Date() });
+            this.users.set(userId, { ...profile, creationDate });
         }
     }
 
@@ -28,5 +29,8 @@ class UserProfiler {
     }
 }
 
+<<<<<<< Updated upstream
 // Comments: coś się dzieje nie tak z datą
 
+=======
+>>>>>>> Stashed changes
