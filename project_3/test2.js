@@ -28,9 +28,3 @@ class UserProfiler {
         }
     }
 }
-
-<<<<<<< Updated upstream
-// Comments: coś się dzieje nie tak z datą
-
-=======
->>>>>>> Stashed changes
