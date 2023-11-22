@@ -1,235 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scientist & Developer Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <style>
-        body, html {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-        .navigation {
-            display: flex;
-            justify-content: center;
-            background-color: #132F4C;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .navigation a {
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: background-color 0.3s;
-        }
-        .navigation a:hover {
-            background-color: #1B3A5B;
-            border-radius: 5px;
-        }
-        .section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        .white-link {
-            color: white; /* Ustawia kolor tekstu na biały */
-            text-decoration: none; /* Usuwa podkreślenie */
-        }
-        .white-link:hover {
-            color: #007bff;
-            text-decoration: underline;
-        }
-        .section::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 33.33%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-        .first-section::before, .last-section::before {
-            background-size: 50%;
-            background-repeat: no-repeat;
-        }
-        .home::before {
-            background-image: url('./images/fig0.png');
-        }
-        .research::before {
-            background-image: url('./images/fig1.png');
-        }
-        .projects::before {
-            background-image: url('./images/fig2.png');
-        }
-        .teaching::before {
-            background-image: url('./images/fig3.png');
-        }
-        .tutorials::before {
-            background-image: url('./images/fig4.png');
-        }
-        .articles::before {
-            background-image: url('./images/fig6.png');
-        }
-        .contact::before {
-            background-image: url('./images/fig5.png');
-        }
-        .content {
-            width: 66.67%;
-            padding-left: 33.33%;
-            text-align: justify;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        .home .content, .contact .content {
-            align-items: center;
-            text-align: center;
-        }
-        h1, h2 {
-            margin-top: -300px;
-            margin-left: 120px;
-            color: white;
-            font-size: 4em;
-        }
-        .home h1, .contact h2 {
-            margin-left: -500px;
-        }
-        p, .articles-list li {
-            margin-top: 30px;
-            margin-left: 100px;
-            margin-right: 100px;
-        }
-        .home p, .contact p {
-            margin-left: -500px;
-            margin-right: 0;
-            margin-top: 30px;
-        }
-        .home, .research, .projects, .teaching, .tutorials, .articles, .contact {
-            color: white;
-            background-color: #1B3A5B;
-        }
-        .research .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 20px;
-        }
-        .articles-list {
-            list-style-type: none;
-            padding: 0;
-            margin-left: 20px;
-        }
-        .articles-list li {
-            margin-bottom: 10px;
-            margin-left: 100px;
-            margin-right: 100px;
-        }
-        .teaching-list {
-            list-style-type: none;
-            padding: 0;
-            margin-left: 20px;
-        }
-        p {
-            line-height: 1.6;
-        }
-        .social-icons {
-            display: flex;
-            justify-content: start;
-            margin-left: 20px;
-        }
-        .social-icons a {
-            color: white;
-            margin: 5px;
-            font-size: 24px;
-        }
-        .social-icons a:hover {
-            color: #007bff;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/contact.js" defer></script>
+    <style></style>
 </head>
+
 <body>
-<div class="navigation">
-    <a href="#home">Home</a>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#teaching">Teaching</a>
-    <a href="#tutorials">Tutorials</a>
-    <a href="#articles">Articles</a>
-    <a href="#contact">Contact</a>
-</div>
-<div class="section home first-section" id="home">
-    <div class="content">
-        <h1>Welcome to my personal page</h1>
-        <p>This is the home page of my scientific and development portfolio. Explore my work and insights in science and technology.</p>
+    <div class="navigation">
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#tutorials">Tutorials</a>
+        <a href="#articles">Articles</a>
+        <a href="#contact">Contact</a>
     </div>
-</div>
-<div class="section research" id="research">
-    <div class="content">
-        <h2>Research</h2>
-        <p>Discover my latest research in physics, chemistry, and data science. Dive into my publications and ongoing projects.</p>
-    </div>
-</div>
-<div class="section projects" id="projects">
-    <div class="content">
-        <h2>Projects</h2>
-        <p>Here you can find my portfolio of projects, including software development, research, and more.</p>
-    </div>
-</div>
-<div class="section teaching" id="teaching">
-    <div class="content">
-        <h2>Teaching</h2>
-        <p> Explore my teaching portfolio, including courses, workshops, and educational resources I've developed. </p>
-        <ul class="articles-list">
-            <li> 1. Physics laboratory for physics students (2021, 2022) </li>
-            <li> 2. Physics laboratory for chemistry students </li>
-            <li> 3. Physics laboratory for biotechnology students</li>
-            <li> 4. Web Development for computer science students (HTML/CSS, JS, Node.js)</li>
-            <li> 5. C/C++ programming for computer science students</li>
-        </ul>
-    </div>
-</div>
-<div class="section tutorials" id="tutorials">
-    <div class="content">
-        <h2>Tutorials</h2>
-        <p>Access a range of tutorials covering various aspects of programming, machine learning, and scientific computing.</p>
-    </div>
-</div>
-<div class="section articles" id="articles">
-    <div class="content">
-        <h2>Articles</h2>
-        <ul class="articles-list">
-            <li><a href="https://iopscience.iop.org/article/10.1088/1361-6455/ac8298/meta" class="white-link">1. M. Hendzel, M. Fidrysiak, J. Spałek, Many-particle covalency...</a></li>
-            <li><a href="https://pubs.acs.org/doi/full/10.1021/acs.jpclett.2c02544" class="white-link">2. M. Hendzel, M. Fidrysiak, J. Spałek, Toward Complementary Characterization...</a></li>
-            <li><a href="http://przyrbwn.icm.edu.pl/APP/PDF/143/app143z2p12.pdf" class="white-link">3. M. Hendzel, J. Spałek, Degree of atomicity in chemical bonding...</a></li>
-            <li><a href="https://books.google.pl/books?id=2WvDEAAAQBAJ" class="white-link">4. E. Brocławik, M. Fidrysiak, M. Hendzel, J. Spałek, Interparticle correlations...</a></li>
-        </ul>
-    </div>
-</div>
-<div class="section contact last-section" id="contact">
-    <div class="content">
-        <h2>Contact</h2>
-        <p>Get in touch for collaborations, discussions, or any inquiries. Let's connect and explore the possibilities.</p>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/maciej-hendzel-843a568b/" target="_blank" title="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/MacieOk" target="_blank" title="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="mailto:maciej.hendzel@doctoral.uj.edu.pl" title="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://scholar.google.com/citations?user=veLhHmsAAAAJ&hl=en&oi=ao" target="_blank" title="Google Scholar">
-                <i class="fas fa-graduation-cap"></i>
-            </a>
+    <div class="section home first-section" id="home">
+        <div class="section_img"></div>
+        <div class="content">
+            <h1>Welcome to my personal page</h1>
+            <p>
+                This is the home page of my scientific and development portfolio.
+                Explore my work and insights in science and technology.
+            </p>
         </div>
     </div>
-</div>
+    <div class="section research" id="research">
+        <div class="section_img"></div>
+        <div class="content">
+            <h2>Research</h2>
+            <p>
+                Discover my latest research in physics, chemistry, and data science.
+                Dive into my publications and ongoing projects.
+            </p>
+        </div>
+    </div>
+    <div class="section projects" id="projects">
+        <div class="section_img"></div>
+        <div class="content">
+            <h2>Projects</h2>
+            <p>
+                Here you can find my portfolio of projects, including software
+                development, research, and more.
+            </p>
+        </div>
+    </div>
+    <div class="section teaching" id="teaching">
+        <div class="section_img"></div>
+        <div class="content">
+            <h2>Teaching</h2>
+            <p>
+                Explore my teaching portfolio, including courses, workshops, and
+                educational resources I've developed.
+            </p>
+            <ul class="articles-list">
+                <li>1. Physics laboratory for physics students (2021, 2022)</li>
+                <li>2. Physics laboratory for chemistry students</li>
+                <li>3. Physics laboratory for biotechnology students</li>
+                <li>
+                    4. Web Development for computer science students (HTML/CSS, JS,
+                    Node.js)
+                </li>
+                <li>5. C/C++ programming for computer science students</li>
+            </ul>
+        </div>
+    </div>
+    <div class="section tutorials" id="tutorials">
+        <div class="section_img"></div>
+        <div class="content">
+            <h2>Tutorials</h2>
+            <p>
+                Access a range of tutorials covering various aspects of programming,
+                machine learning, and scientific computing.
+            </p>
+        </div>
+    </div>
+    <div class="section articles" id="articles">
+        <div class="section_img"></div>
+        <div class="content">
+            <h2>Articles</h2>
+            <ul class="articles-list">
+                <li>
+                    <a href="https://iopscience.iop.org/article/10.1088/1361-6455/ac8298/meta" class="white-link">1. M.
+                        Hendzel, M. Fidrysiak, J. Spałek, Many-particle
+                        covalency...</a>
+                </li>
+                <li>
+                    <a href="https://pubs.acs.org/doi/full/10.1021/acs.jpclett.2c02544" class="white-link">2. M.
+                        Hendzel, M. Fidrysiak, J. Spałek, Toward Complementary
+                        Characterization...</a>
+                </li>
+                <li>
+                    <a href="http://przyrbwn.icm.edu.pl/APP/PDF/143/app143z2p12.pdf" class="white-link">3. M. Hendzel,
+                        J. Spałek, Degree of atomicity in chemical
+                        bonding...</a>
+                </li>
+                <li>
+                    <a href="https://books.google.pl/books?id=2WvDEAAAQBAJ" class="white-link">4. E. Brocławik, M.
+                        Fidrysiak, M. Hendzel, J. Spałek,
+                        Interparticle correlations...</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="section contact last-section" id="contact">
+        <div class="section_img"></div>
+        <div class="content">
+            <h2>Contact</h2>
+            <p>
+                Get in touch for collaborations, discussions, or any inquiries. Let's
+                connect and explore the possibilities.
+            </p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/maciej-hendzel-843a568b/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/MacieOk" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:maciej.hendzel@doctoral.uj.edu.pl" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://scholar.google.com/citations?user=veLhHmsAAAAJ&hl=en&oi=ao" target="_blank"
+                    title="Google Scholar">
+                    <i class="fas fa-graduation-cap"></i>
+                </a>
+            </div>
+            <div class="contact_form_container">
+                <form class="contact_form">
+                    <input type="hidden" name="_captcha" value="false" />
+                    <label for="contact_form_email">Email address</label>
+                    <input type="email" placeholder="adam.nowak@wp.pl" name="contact_form_email"
+                        id="contact_form_email" />
+                    <label for="contact_form_title">Message title</label>
+                    <input type="text" placeholder="Your message title" name="contact_form_title"
+                        id="contact_form_title" />
+                    <label for="contact_form_textarea">Message</label>
+                    <textarea rows="7" id="contact_form_textarea" placeholder="Content of your message"></textarea>
+                    <button type="submit" id="contact_form_submit">Wyślij</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
