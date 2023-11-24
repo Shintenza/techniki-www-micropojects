@@ -8,6 +8,7 @@ html {
   padding: 0;
   scroll-behavior: smooth;
   box-sizing: border-box;
+  background-color: #1b3a5b;
 }
 .navigation {
   display: flex;
@@ -211,3 +212,22 @@ textarea {
   background-color: #f3bb00 !important;
   color: white !important;
 }
+
+
+.slide_from_left {
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: 800ms all ease-in-out;
+}
+
+.slide_from_right {
+  opacity: 0;
+  transform: translateX(50%);
+  transition: 800ms all ease-in-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
