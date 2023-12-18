@@ -5,7 +5,7 @@ class UserDatabase {
     this.#users = [];
   }
 
-  async addUser(user) {
+  addUser(user) {
     if (this.#saveUser(user)) {
       return user;
     } else {
